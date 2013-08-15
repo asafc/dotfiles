@@ -1,0 +1,38 @@
+############################################################
+## PATH
+############################################################
+
+function conditionally_prefix_path {
+  local dir=$1
+  if [ -d $dir ]; then
+    PATH="$dir:${PATH}"
+  fi
+}
+
+conditionally_prefix_path /usr/local/bin
+conditionally_prefix_path /usr/local/sbin
+conditionally_prefix_path /usr/local/share/python
+conditionally_prefix_path /usr/local/mysql/bin
+
+GRAY="\[\033[1;30m\]"
+RED="\[\033[31m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
+PURPLE="\[\033[35m\]"
+CYAN="\[\033[0;36m\]"
+LIGHT_CYAN="\[\033[1;36m\]"
+NO_COLOR="\[\033[0m\]"
+
+if [ -n "$BASH" ]; then
+  export PS1="$LIGHT_CYAN\u@\h$NO_COLOR:$PURPLE\w$NO_COLOR\$ "
+fi
+
+# lock computer
+alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+# colorful commands
+alias ls='ls -lhaG'
+alias grep='grep -n --color=auto'
+
+# git shortcuts
+alias gits="git status"
+alias gitlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
