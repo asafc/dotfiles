@@ -39,8 +39,12 @@ alias gitlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C
 
 # find shortcuts
 alias fl='find . -name "*.el" | xargs grep -n --color=auto'
+alias fp='find . -name "*.py" | xargs grep -n --color=auto'
 alias fphp='find . -name "*.php" | xargs grep -n --color=auto'
-
+alias fcc='find . -name "*.cpp" | xargs grep -n --color=auto'
+alias fhpp='find . -name "*.hpp" | xargs grep -n --color=auto'
+alias fc='find . -name "*.c" | xargs grep -n --color=auto'
+alias fh='find . -name "*.h" | xargs grep -n --color=auto'
 
 # github clone shortcut
 # in the shell, type: github {user} {repo} ({local_repo_name})
@@ -58,3 +62,18 @@ function github {
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+
+# projects settings
+if [ -f ~/.project_settings ]; then
+   source ~/.project_settings
+fi
+
+# django settings module shortcut
+# in the shell, type: django-settings {project name}
+function django-settings {
+  local project=$1
+  if [ $project ]; then
+      export DJANGO_SETTINGS_MODULE=$project.settings
+  fi
+  echo "DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE"
+}
