@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# remove all temp files
+
+find . -name "*~" | xargs rm -f
+find . -name "*pyc" | xargs rm -f
