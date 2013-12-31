@@ -23,7 +23,7 @@ for file in {aliases,bash_profile,bashrc,completion,exports,functions,path,promp
     cp shell/$file.sh ~/.$file
 done
 
-for file in {cleandir,git-all,git-amend,git-credit,git-track,git-unstage,github,todo}; do
+for file in {cleandir,git-all,git-amend,git-credit,git-track,git-unstage,todo}; do
     sudo cp "bin/$file" "/usr/local/bin/$file"
     sudo chmod a+x "/usr/local/bin/$file"
 done
