@@ -24,5 +24,5 @@ function bitbucket() {
 
 function ln-vagrant() {
     local file=$1
-    ln -s vagrant/$file.vagrantfile Vagrantfile
+    ln -s vagrant/$file.vagrant.rb Vagrantfile
 }
